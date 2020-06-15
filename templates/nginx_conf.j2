@@ -1,0 +1,25 @@
+
+http {
+    {% for global in http_globals %}
+    include    {{ ' %s-4s '| format(global) }};
+    {% endfor %}
+
+
+    {% for proxy in reverse_proxies %}
+    upstream {{ ' %s-4s '| format(proxy) }} {
+    server {{ ' %s-4s: '| format(ip) }} {{ ' %s-4s '| format(port) }};
+    }
+    server {
+         {% for listen in listen_ports %}
+            {{ ' %s-4s: '| format(listen) }} {{ ' %s-4s '| format(listen.port) }};
+         {% endfor %}
+         {% for server in server_list %}
+            {{ ' %s-4s: '| format(server_name) }} {{ ' %s-4s '| format(server.fqdn) }};
+         {% endfor %}
+          {% for location in end_points %}
+          location {{ ' %s-4s: '| format(location) }} {
+             {{ ' %s-4s: '| format(proxy_pass) }} {{ ' %s-4s '| format(app) }};
+        }
+    }
+    {% endfor %}
+}
