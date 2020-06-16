@@ -48,5 +48,5 @@ Task 2
 
 
 
-### User Guides
+### Architecture Diagram
 ![App Architeture Diagram](arch.png)
