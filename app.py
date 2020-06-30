@@ -1,6 +1,7 @@
 from libs.nginx_configuration import NginxConfiguration
 from libs.yaml_dict_converter import SaveYaml
 
+
 class App(object):
     def __init__(self):
         print("Constructor for User")
