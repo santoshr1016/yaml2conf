@@ -1,5 +1,5 @@
 blinker==1.4
-Jinja2==2.11.2
+Jinja2==2.11.3
 jsonify==0.5
 MarkupSafe==1.1.1
 marshmallow==3.6.1
